@@ -3,6 +3,7 @@ package com.example.demo.servicios.servicioDistinguirSujeto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.repositorios.RepositorioIr;
 import com.example.demo.servicios.servicioConjugacion.ServicioConjugacionIr;
 
 @Service
@@ -11,37 +12,92 @@ public class ServicioDistinguirSujetoIr {
     @Autowired
     ServicioConjugacionIr servicioConjugacionIr;
 
-    public void distinguirSujetoIr(String sujeto, String verboInfinitivo){
+    @Autowired
+    RepositorioIr repositorioIr;
+
+    public String distinguirSujetoIr(String sujeto, String verboInfinitivo){
 
         String raiz = verboInfinitivo.substring(0, verboInfinitivo.length() - 2);
+        String conjugacion = null;
 
         switch (sujeto) {
+
             case "primeraPersonaS":
-                servicioConjugacionIr.conjugacionPrimeraPersonaS(raiz);
+
+                conjugacion = repositorioIr.findPrimeraPersonaSByVerboInfinitivo(verboInfinitivo);
+                if (conjugacion != null) {
+                  // Si la conjugación se encontró en la base de datos, la retorno 
+                  return conjugacion;
+                }else{
+                    //Si no se encontro, la calculo.
+                    conjugacion = servicioConjugacionIr.conjugacionPrimeraPersonaS(raiz);
+                }
+
             break;
 
             case "segundaPersonaS":
-                servicioConjugacionIr.conjugacionSegundaPersonaS(raiz);
+
+                conjugacion = repositorioIr.findPrimeraSegundaSByVerboInfinitivo(verboInfinitivo);
+                if (conjugacion != null) {
+                   // Si la conjugación se encontró en la base de datos, al retorno 
+                   return conjugacion;
+                }else{
+                   conjugacion = servicioConjugacionIr.conjugacionSegundaPersonaS(raiz);
+                }
+
             break;
 
             case "terceraPersonaS":
-                servicioConjugacionIr.conjugacionTerceraPersonaS(raiz);
+
+                conjugacion = repositorioIr.findPrimeraTerceraSByVerboInfinitivo(verboInfinitivo);
+                if (conjugacion != null) {
+                   // Si la conjugación se encontró en la base de datos, al retorno 
+                   return conjugacion;
+                 }else{
+                    conjugacion = servicioConjugacionIr.conjugacionTerceraPersonaS(raiz);
+                }
+
             break;
 
             case "primeraPersonaP":
-                servicioConjugacionIr.conjugacionPrimeraPersonaP(raiz);
+
+                conjugacion = repositorioIr.findPrimeraPersonaPByVerboInfinitivo(verboInfinitivo);
+                if (conjugacion != null) {
+                   // Si la conjugación se encontró en la base de datos, al retorno 
+                   return conjugacion;
+                }else{
+                    conjugacion = servicioConjugacionIr.conjugacionPrimeraPersonaP(raiz);
+                }
+
             break;
 
             case "segundaPersonaP":
-                servicioConjugacionIr.conjugacionSegundaPersonaP(raiz);
+
+                conjugacion = repositorioIr.findPrimeraSegundaPByVerboInfinitivo(verboInfinitivo);
+                if (conjugacion != null) {
+                   // Si la conjugación se encontró en la base de datos, al retorno 
+                   return conjugacion;
+                }else{
+                    conjugacion = servicioConjugacionIr.conjugacionSegundaPersonaP(raiz);
+                }
+
             break;
             
             case "terceraPersonaP":
-                servicioConjugacionIr.conjugacionTerceraPersonaP(raiz);
+
+                conjugacion = repositorioIr.findPrimeraTerceraPByVerboInfinitivo(verboInfinitivo);
+                if (conjugacion != null) {
+                   // Si la conjugación se encontró en la base de datos, al retorno 
+                   return conjugacion;
+                }else{
+                    conjugacion = servicioConjugacionIr.conjugacionTerceraPersonaP(raiz);
+                }
             break;
         
             default:
             break;
         }
+
+        return conjugacion;
     }
 }

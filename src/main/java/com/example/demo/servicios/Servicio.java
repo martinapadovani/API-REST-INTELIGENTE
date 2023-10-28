@@ -17,7 +17,8 @@ public class Servicio {
     ServicioDistinguirSujetoEr servicioDistinguirSujetoEr;
 
     @Autowired
-    ServicioDistinguirSujetoIr servicioDistinguirSujetoIr;
+    ServicioDistinguirSujetoIr servicioDistinguirSujetoIr;  
+
 
     public void conjugar(String verboInfinitivo, String sujeto){
 
@@ -32,7 +33,6 @@ public class Servicio {
         }if(terminacionER){
 
             servicioDistinguirSujetoEr.distinguirSujetoEr(sujeto, verboInfinitivo);
-
 
         }if(terminacionIR){
 

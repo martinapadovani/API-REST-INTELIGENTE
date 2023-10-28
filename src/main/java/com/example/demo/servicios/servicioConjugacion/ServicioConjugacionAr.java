@@ -1,14 +1,20 @@
 package com.example.demo.servicios.servicioConjugacion;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.interfaz.Conjugaciones;
+import com.example.demo.repositorios.RepositorioAr;
 
 @Service
 public class ServicioConjugacionAr implements Conjugaciones{
 
+    @Autowired
+    RepositorioAr repositorioAr;
+
     @Override
     public String conjugacionPrimeraPersonaS(String raiz){
+
         String verboConjugado = raiz.concat("o");
         return verboConjugado;
     }
