@@ -3,7 +3,7 @@ package com.example.demo.servicios;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.entidades.Verbo;
+
 import com.example.demo.servicios.servicioDistinguirSujeto.ServicioDistinguirSujetoAr;
 import com.example.demo.servicios.servicioDistinguirSujeto.ServicioDistinguirSujetoEr;
 import com.example.demo.servicios.servicioDistinguirSujeto.ServicioDistinguirSujetoIr;
@@ -31,17 +31,21 @@ public class Servicio {
 
         if(terminacionAR){
 
-            conjugacion =  servicioDistinguirSujetoAr.distinguirSujetoAr(sujeto, verboInfinitivo);
+            return  conjugacion =  servicioDistinguirSujetoAr.distinguirSujetoAr(sujeto, verboInfinitivo);
 
         }if(terminacionER){
 
-            conjugacion =  servicioDistinguirSujetoEr.distinguirSujetoEr(sujeto, verboInfinitivo);
+            return conjugacion =  servicioDistinguirSujetoEr.distinguirSujetoEr(sujeto, verboInfinitivo);
 
         }if(terminacionIR){
 
-            conjugacion =  servicioDistinguirSujetoIr.distinguirSujetoIr(sujeto, verboInfinitivo);
+            return conjugacion =  servicioDistinguirSujetoIr.distinguirSujetoIr(sujeto, verboInfinitivo);
 
         }
+
+        System.out.println("Servicio" + conjugacion);
+        System.out.println(terminacionAR);
+        System.err.println(verboInfinitivo + sujeto);
 
         return conjugacion;
     }

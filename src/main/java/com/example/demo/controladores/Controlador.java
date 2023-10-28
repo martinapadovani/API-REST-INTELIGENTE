@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.servicios.Servicio;
 @RestController
-@RequestMapping("/")
+@RequestMapping("/conjugar")
 public class Controlador {
 
     @Autowired
     Servicio servicio;
 
-    @GetMapping("/conjugar/{verbo}/{sujeto}")
+    @GetMapping("/{verbo}/{sujeto}")
     public String conjugar(@PathVariable("verbo") String verbo, @PathVariable("sujeto") String sujeto ){
 
         return servicio.conjugar(verbo, sujeto);

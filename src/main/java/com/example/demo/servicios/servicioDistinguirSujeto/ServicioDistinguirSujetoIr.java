@@ -30,7 +30,7 @@ public class ServicioDistinguirSujetoIr {
                   return conjugacion;
                 }else{
                     //Si no se encontro, la calculo.
-                    conjugacion = servicioConjugacionIr.conjugacionPrimeraPersonaS(raiz);
+                    conjugacion = servicioConjugacionIr.conjugacionPrimeraPersonaS(raiz, verboInfinitivo);
                 }
 
             break;
@@ -42,7 +42,7 @@ public class ServicioDistinguirSujetoIr {
                    // Si la conjugación se encontró en la base de datos, al retorno 
                    return conjugacion;
                 }else{
-                   conjugacion = servicioConjugacionIr.conjugacionSegundaPersonaS(raiz);
+                   conjugacion = servicioConjugacionIr.conjugacionSegundaPersonaS(raiz, verboInfinitivo);
                 }
 
             break;
@@ -54,7 +54,7 @@ public class ServicioDistinguirSujetoIr {
                    // Si la conjugación se encontró en la base de datos, al retorno 
                    return conjugacion;
                  }else{
-                    conjugacion = servicioConjugacionIr.conjugacionTerceraPersonaS(raiz);
+                    conjugacion = servicioConjugacionIr.conjugacionTerceraPersonaS(raiz, verboInfinitivo);
                 }
 
             break;
@@ -66,7 +66,7 @@ public class ServicioDistinguirSujetoIr {
                    // Si la conjugación se encontró en la base de datos, al retorno 
                    return conjugacion;
                 }else{
-                    conjugacion = servicioConjugacionIr.conjugacionPrimeraPersonaP(raiz);
+                    conjugacion = servicioConjugacionIr.conjugacionPrimeraPersonaP(raiz, verboInfinitivo);
                 }
 
             break;
@@ -78,7 +78,7 @@ public class ServicioDistinguirSujetoIr {
                    // Si la conjugación se encontró en la base de datos, al retorno 
                    return conjugacion;
                 }else{
-                    conjugacion = servicioConjugacionIr.conjugacionSegundaPersonaP(raiz);
+                    conjugacion = servicioConjugacionIr.conjugacionSegundaPersonaP(raiz, verboInfinitivo);
                 }
 
             break;
@@ -90,7 +90,7 @@ public class ServicioDistinguirSujetoIr {
                    // Si la conjugación se encontró en la base de datos, al retorno 
                    return conjugacion;
                 }else{
-                    conjugacion = servicioConjugacionIr.conjugacionTerceraPersonaP(raiz);
+                    conjugacion = servicioConjugacionIr.conjugacionTerceraPersonaP(raiz, verboInfinitivo);
                 }
             break;
         
