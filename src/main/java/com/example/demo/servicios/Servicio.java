@@ -3,13 +3,18 @@ package com.example.demo.servicios;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import com.example.demo.entidades.Verbo;
+import com.example.demo.servicios.ServicioConjugacionTodos.ServicioConjugacionTodosAr;
+import com.example.demo.servicios.ServicioConjugacionTodos.ServicioConjugacionTodosEr;
+import com.example.demo.servicios.ServicioConjugacionTodos.ServicioConjugacionTodosIr;
 import com.example.demo.servicios.servicioDistinguirSujeto.ServicioDistinguirSujetoAr;
 import com.example.demo.servicios.servicioDistinguirSujeto.ServicioDistinguirSujetoEr;
 import com.example.demo.servicios.servicioDistinguirSujeto.ServicioDistinguirSujetoIr;
 
 @Service
 public class Servicio {
+
+    //Distinguir sujeto a conjugar
 
     @Autowired
     ServicioDistinguirSujetoAr servicioDistinguirSujetoAr;
@@ -20,8 +25,19 @@ public class Servicio {
     @Autowired
     ServicioDistinguirSujetoIr servicioDistinguirSujetoIr;  
 
+    //Conjugar en todos los sujetos
 
-    public String conjugar(String verboInfinitivo, String sujeto){
+    @Autowired
+    ServicioConjugacionTodosAr servicioConjugacionTodosAr;
+
+    @Autowired
+    ServicioConjugacionTodosEr servicioConjugacionTodosEr;
+
+    @Autowired
+    ServicioConjugacionTodosIr servicioConjugacionTodosIr;
+
+
+    public String conjugarSujeto(String verboInfinitivo, String sujeto){
 
         boolean terminacionAR = verboInfinitivo.endsWith("ar");
         boolean terminacionER = verboInfinitivo.endsWith("er");
@@ -43,10 +59,31 @@ public class Servicio {
 
         }
 
-        System.out.println("Servicio" + conjugacion);
-        System.out.println(terminacionAR);
-        System.err.println(verboInfinitivo + sujeto);
-
         return conjugacion;
+    }
+
+    public Verbo conjugarTodos(String verboInfinitivo){
+
+        boolean terminacionAR = verboInfinitivo.endsWith("ar");
+        boolean terminacionER = verboInfinitivo.endsWith("er");
+        boolean terminacionIR = verboInfinitivo.endsWith("ir");
+
+        Verbo verboConjugado = new Verbo();
+
+        if(terminacionAR){
+
+            return  verboConjugado =  servicioConjugacionTodosAr.obtenerConjugaciones(verboInfinitivo);
+
+        }if(terminacionER){
+
+            return verboConjugado =  servicioConjugacionTodosEr.obtenerConjugaciones(verboInfinitivo);
+
+        }if(terminacionIR){
+
+            return verboConjugado =  servicioConjugacionTodosIr.obtenerConjugaciones(verboInfinitivo);
+            
+        }
+
+        return verboConjugado;
     }
 }
