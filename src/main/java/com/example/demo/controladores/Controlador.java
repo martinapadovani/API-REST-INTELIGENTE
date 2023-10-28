@@ -5,10 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.example.demo.entidades.VerboAr;
 
 import com.example.demo.servicios.Servicio;
-
 @RestController
 @RequestMapping("/")
 public class Controlador {
@@ -16,9 +14,10 @@ public class Controlador {
     @Autowired
     Servicio servicio;
 
-    @GetMapping("/conjugar/{verbo}")
-    public void conjugar(@PathVariable("verbo") VerboAr verbo ){
+    @GetMapping("/conjugar/{verbo}/{sujeto}")
+    public String conjugar(@PathVariable("verbo") String verbo, @PathVariable("sujeto") String sujeto ){
 
+        return servicio.conjugar(verbo, sujeto);
     }
     
 }

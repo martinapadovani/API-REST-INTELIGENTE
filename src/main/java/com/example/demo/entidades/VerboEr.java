@@ -6,7 +6,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table
-public class VerboEr {
+public class VerboEr extends Verbo {
 
     @Id
     String verboInfinitivo;

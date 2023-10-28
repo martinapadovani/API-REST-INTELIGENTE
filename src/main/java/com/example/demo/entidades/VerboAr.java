@@ -6,7 +6,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table()
-public class VerboAr {
+public class VerboAr extends Verbo{
 
     //La tabla necesita un id, podria ser el propio verbo y no un nombre.
 
